@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["MinimapAPI/MinimapAPI.csproj", "MinimapAPI/"]
-RUN dotnet restore "MinimapAPI/MinimapAPI.csproj"
+COPY ["MinimalAPI.csproj", "."]
+RUN dotnet restore "./MinimalAPI.csproj"
 COPY . .
-WORKDIR "/src/MinimapAPI"
-RUN dotnet build "MinimapAPI.csproj" -c Release -o /app/build
+WORKDIR "/src/."
+RUN dotnet build "MinimalAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MinimapAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "MinimalAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MinimapAPI.dll"]
+ENTRYPOINT ["dotnet", "MinimalAPI.dll"]

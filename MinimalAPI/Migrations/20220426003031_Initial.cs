@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MinimapAPI.Migrations
+namespace MinimalAPI.Migrations
 {
     public partial class Initial : Migration
     {

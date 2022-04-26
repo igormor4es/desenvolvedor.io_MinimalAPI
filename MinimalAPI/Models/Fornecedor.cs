@@ -1,4 +1,4 @@
-﻿namespace MinimapAPI.Models;
+﻿namespace MinimalAPI.Models;
 
 public class Fornecedor
 {

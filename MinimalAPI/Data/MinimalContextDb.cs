@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MinimapAPI.Models;
+using MinimalAPI.Models;
 
-namespace MinimapAPI.Data;
+namespace MinimalAPI.Data;
 
 public class MinimalContextDb : DbContext
 {

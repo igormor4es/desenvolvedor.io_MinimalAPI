@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MinimapAPI.Data;
+using MinimalAPI.Data;
 
 #nullable disable
 
-namespace MinimapAPI.Migrations
+namespace MinimalAPI.Migrations
 {
     [DbContext(typeof(MinimalContextDb))]
-    partial class MinimalContextDbModelSnapshot : ModelSnapshot
+    [Migration("20220426003031_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace MinimapAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MinimapAPI.Models.Fornecedor", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Fornecedor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

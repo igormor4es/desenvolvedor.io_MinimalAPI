@@ -164,7 +164,7 @@ void MapActions(WebApplication app)
 
     #endregion
 
-    #region GET's
+    #region GET
 
     app.MapGet("/", [AllowAnonymous] () => "Hello World =]").ExcludeFromDescription();
 
@@ -183,6 +183,10 @@ void MapActions(WebApplication app)
        .WithName("GetFornecedorId")
        .WithTags("Fornecedor");
 
+    #endregion
+
+    #region POST
+
     app.MapPost("/Api/Fornecedor/", [Authorize] async (MinimalContextDb context, Fornecedor fornecedor) =>
     {
         if (!MiniValidator.TryValidate(fornecedor, out var errors))
@@ -196,14 +200,14 @@ void MapActions(WebApplication app)
             : Results.BadRequest("Houve um problema ao salvar o registro!");
 
     }).ProducesValidationProblem()
-        .Produces<Fornecedor>(StatusCodes.Status201Created)
-        .Produces(StatusCodes.Status400BadRequest)
-        .WithName("PostFornecedor")
-        .WithTags("Fornecedor");
+    .Produces<Fornecedor>(StatusCodes.Status201Created)
+    .Produces(StatusCodes.Status400BadRequest)
+    .WithName("PostFornecedor")
+    .WithTags("Fornecedor");
 
     #endregion
 
-    #region PUT's
+    #region PUT
 
     app.MapPut("/Api/Fornecedor/{id}", [Authorize] async (Guid id, MinimalContextDb context, Fornecedor fornecedor) =>
     {
@@ -233,7 +237,7 @@ void MapActions(WebApplication app)
 
     #endregion
 
-    #region DELETE's
+    #region DELETE
 
     app.MapDelete("/Api/Fornecedor/{id}", [Authorize] async (Guid id, MinimalContextDb context) =>
     {
